@@ -1,0 +1,45 @@
+def fff(n,m):
+    num = 0
+    lis = []
+    for i in range(n):
+        lis.append([])
+        for l in range(m):
+            num+=1
+            lis[i].append(0)
+            if i == 0:
+                lis[i][l]=num
+            elif i!=n and i !=n-1:
+                lis[i][-1]=num
+                break
+            elif i == n-1:
+                lis[i][-1]=num
+    
+    lis[n-1].reverse()
+
+    if num == n*m:
+        return lis
+    
+    for i in range(n):
+        if len(lis[-(i+1)]) !=m:
+            num+=1
+            lis[-(i+1)].insert(0,num)
+
+    if num == n*m:
+        return lis
+    
+    if len(lis[1]) !=m:
+        for i in range(n):    
+            for l in range(m-len(lis[1])):
+                num+=1
+                lis[1].insert(l+1,num)
+    if num == n*m:
+        return lis      
+
+
+
+    # lis[1].insert(1,10)
+    print(num)
+    print(lis)
+    return
+
+fff(5,4)
